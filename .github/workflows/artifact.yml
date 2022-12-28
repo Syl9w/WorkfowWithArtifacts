@@ -1,0 +1,18 @@
+name: Workflow with an artifact
+
+on: push
+
+env:
+  ENV_VAR: something_cool
+
+jobs:
+  create-artifact: 
+    runs-on: ubuntu-latest
+    steps: 
+      - name: check out files
+        uses: actions/checkput@v1
+
+      - uses: actions/upload-artifact@v1.0.0
+        with: 
+          name: ${{ env.ENV_VAR }}
+          path: .
